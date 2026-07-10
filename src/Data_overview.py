@@ -26,20 +26,20 @@ df = pd.read_csv(r'C:\Users\HP\OneDrive\Documents\Desktop\Project-Healthcare-Ana
 # 12. Initial Observations
 # ==========================================================
 
-# print(df.tail())
+print(df.tail())
 
-# print(df.shape) #(55500, 15)
+print(df.shape) #(55500, 15)
 
-# print(df.columns)
+print(df.columns)
 
-# print(df.info())
+print(df.info())
 
-# print(df.describe())
+print(df.describe())
 
-# print(df.isnull().sum())
+print(df.isnull().sum())
 
-# print(df.duplicated().sum())
+print(df.duplicated().sum())
 
-# for col in df.columns:
-#     print(f"\n{col}")
-#     print(df[col].nunique())
+for col in df.columns:
+    print(f"\n{col}")
+    print(df[col].nunique())
