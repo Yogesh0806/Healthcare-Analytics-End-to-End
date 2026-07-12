@@ -35,7 +35,7 @@ def bar_plot(data,column, title, xlabel, ylabel, color='steelblue'):
     plt.title(title, fontsize=16)
     plt.xlabel(xlabel)
     plt.ylabel(ylabel)
-    plt.xticks(roration=45)
+    plt.xticks(rotation=45)
     save_plot(f'{column.lower().replace(' ', '_')}.png')
   
   
@@ -55,7 +55,7 @@ def histogram(data, column, bins=30, color="skyblue"):
 
 def pie_chart(data, column):
     plt.figure(figsize=(8,8))
-    data[column].value_counts().plot(kinds='pie', autopct="%!.1f%%")
+    data[column].value_counts().plot(kind='pie', autopct="%1.1f%%")
     plt.ylabel("")
     plt.title(column)
 
