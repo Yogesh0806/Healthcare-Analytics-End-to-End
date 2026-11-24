@@ -34,16 +34,38 @@ plt.ylabel("Number of Patients")
 sns.boxplot(data=df, x="Medical Condition", y="Billing Amount")
 plt.title("Billing by Medical Condition")
 plt.xticks(rotation=45)
-save_plot("billing_by_condition.png")
+# save_plot("billing_by_condition.png")
 
 # Billing vs Insurance
 sns.boxplot(data=df, x="Insurance Provider", y="Billing Amount")
 plt.title("Billing by Insurance Provider")
 plt.xticks(rotation=45)
-save_plot("insurance_vs_billing.png")
+# save_plot("insurance_vs_billing.png")
 
 # Billing vs Admission Type
 df.groupby("Admission Type")["Billing Amount"].mean().plot(kind="bar")
 plt.title("Average Billing by Admission Type")
 plt.ylabel("Average Billing")
-save_plot("billing_by_admission_type.png")
+# save_plot("billing_by_admission_type.png")
+
+# ================= HOSPITAL =================
+
+# Top 10 Hospitals by Patients
+df["Hospital"].value_counts().head(10).plot(kind="bar")
+plt.title("Top 10 Hospitals by Patients")
+plt.ylabel("Number of Patients")
+# save_plot("hospital_patients.png")
+
+# Top 10 Doctors by Patients
+df["Doctor"].value_counts().head(10).plot(kind="bar")
+plt.title("Top 10 Doctors by Patients")
+plt.ylabel("Number of Patients")
+# save_plot("doctor_patients.png")
+
+# Top 10 Hospitals by Average Billing
+hospital_billing = df.groupby("Hospital")["Billing Amount"].mean().sort_values(ascending=False).head(10)
+
+hospital_billing.plot(kind="bar")
+plt.title("Top 10 Hospitals by Average Billing")
+plt.ylabel("Average Billing")
+# save_plot("hospital_vs_billing.png")
