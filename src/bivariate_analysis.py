@@ -69,3 +69,22 @@ hospital_billing.plot(kind="bar")
 plt.title("Top 10 Hospitals by Average Billing")
 plt.ylabel("Average Billing")
 # save_plot("hospital_vs_billing.png")
+
+# ================= CLINICAL =================
+
+# Medical Condition vs Medication
+pd.crosstab(df["Medical Condition"], df["Medication"]).plot(kind="bar")
+plt.title("Condition vs Medication")
+plt.xticks(rotation=45)
+# save_plot("condition_vs_medication.png")
+
+# Medical Condition vs Test Results
+pd.crosstab(df["Medical Condition"], df["Test Results"]).plot(kind="bar", stacked=True)
+plt.title("Condition vs Test Results")
+plt.xticks(rotation=45)
+# save_plot("condition_vs_test_results.png")
+
+# Admission Type vs Test Results
+pd.crosstab(df["Admission Type"], df["Test Results"]).plot(kind="bar", stacked=True)
+plt.title("Admission Type vs Test Results")
+# save_plot("admission_vs_test_results.png")
