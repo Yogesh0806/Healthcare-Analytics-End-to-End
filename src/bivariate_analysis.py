@@ -88,3 +88,44 @@ plt.xticks(rotation=45)
 pd.crosstab(df["Admission Type"], df["Test Results"]).plot(kind="bar", stacked=True)
 plt.title("Admission Type vs Test Results")
 # save_plot("admission_vs_test_results.png")
+
+# ================= TIME ANALYSIS =================
+
+df["Date of Admission"] = pd.to_datetime(df["Date of Admission"])
+
+# Admissions by Year
+df["Date of Admission"].dt.year.value_counts().sort_index().plot(kind="bar")
+plt.title("Admissions by Year")
+plt.ylabel("Number of Admissions")
+save_plot("admissions_by_year.png")
+
+# Admissions by Month
+months = df["Date of Admission"].dt.month_name().value_counts()
+
+month_order = [
+    "January", "February", "March", "April",
+    "May", "June", "July", "August",
+    "September", "October", "November", "December"
+]
+
+months = months.reindex(month_order)
+
+months.plot(kind="line", marker="o")
+plt.title("Admissions by Month")
+plt.ylabel("Number of Admissions")
+save_plot("admissions_by_month.png")
+
+# Admissions by Weekday
+weekdays = df["Date of Admission"].dt.day_name().value_counts()
+
+weekday_order = [
+    "Monday", "Tuesday", "Wednesday",
+    "Thursday", "Friday", "Saturday", "Sunday"
+]
+
+weekdays = weekdays.reindex(weekday_order)
+
+weekdays.plot(kind="bar")
+plt.title("Admissions by Weekday")
+plt.ylabel("Number of Admissions")
+save_plot("admissions_by_weekday.png")
