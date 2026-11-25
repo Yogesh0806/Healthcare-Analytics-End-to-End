@@ -97,7 +97,7 @@ df["Date of Admission"] = pd.to_datetime(df["Date of Admission"])
 df["Date of Admission"].dt.year.value_counts().sort_index().plot(kind="bar")
 plt.title("Admissions by Year")
 plt.ylabel("Number of Admissions")
-save_plot("admissions_by_year.png")
+# save_plot("admissions_by_year.png")
 
 # Admissions by Month
 months = df["Date of Admission"].dt.month_name().value_counts()
@@ -113,7 +113,7 @@ months = months.reindex(month_order)
 months.plot(kind="line", marker="o")
 plt.title("Admissions by Month")
 plt.ylabel("Number of Admissions")
-save_plot("admissions_by_month.png")
+# save_plot("admissions_by_month.png")
 
 # Admissions by Weekday
 weekdays = df["Date of Admission"].dt.day_name().value_counts()
@@ -128,4 +128,6 @@ weekdays = weekdays.reindex(weekday_order)
 weekdays.plot(kind="bar")
 plt.title("Admissions by Weekday")
 plt.ylabel("Number of Admissions")
-save_plot("admissions_by_weekday.png")
+# save_plot("admissions_by_weekday.png")
+
+print("Bivariate Analysis Completed!")
