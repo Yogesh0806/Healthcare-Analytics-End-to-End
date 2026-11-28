@@ -34,3 +34,54 @@ print("FEATURE ENGINEERING")
 print("=" * 60)
 
 print(f"Dataset loaded successfully: {df.shape}")
+
+# ==========================================================
+# 3. CONVERT DATE COLUMNS
+# ==========================================================
+
+df["Date of Admission"] = pd.to_datetime(
+    df["Date of Admission"],
+    errors="coerce"
+)
+
+df["Discharge Date"] = pd.to_datetime(
+    df["Discharge Date"],
+    errors="coerce"
+)
+
+
+# ==========================================================
+# 4. LENGTH OF STAY
+# ==========================================================
+
+df["Length of Stay"] = (
+    df["Discharge Date"] - df["Date of Admission"]
+).dt.days
+
+print("\nLength of Stay created successfully.")
+
+
+# ==========================================================
+# 5. AGE GROUP
+# ==========================================================
+
+age_bins = [0, 17, 29, 44, 59, 74, 120]
+
+age_labels = [
+    "0-17",
+    "18-29",
+    "30-44",
+    "45-59",
+    "60-74",
+    "75+"
+]
+
+df["Age Group"] = pd.cut(
+    df["Age"],
+    bins=age_bins,
+    labels=age_labels,
+    include_lowest=True
+)
+
+print("Age Group created successfully.")
+
